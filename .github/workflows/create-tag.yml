@@ -43,7 +43,7 @@ jobs:
           git config user.name "github-actions[bot]"
           TAG=$(semversioner current-version)
           git add .
-          git commit -m "${TAG}"
+          git commit -m "[skip ci] ${TAG}"
           git push origin '${{ github.base_ref }}'
           git tag -a -m "Tagging for ${TAG}" "v${TAG}"
           git push origin "v${TAG}"
