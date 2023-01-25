@@ -10,7 +10,7 @@ on:
       - unlabeled
 
 jobs:
-  check_semver_label:
+  label-check:
     name: Check for version label
     runs-on: ubuntu-latest
     steps:
