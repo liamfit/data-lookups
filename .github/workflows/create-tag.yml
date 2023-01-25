@@ -18,15 +18,15 @@ jobs:
         
       - name: Major version bump
         if: contains(github.event.pull_request.labels.*.name, 'major')
-        run: semversioner add-change --type major --description "${{ github.event.pull_request.title }}"
+        run: semversioner add-change --type major --description '${{ github.event.pull_request.title }}'
       
       - name: Minor version bump
         if: contains(github.event.pull_request.labels.*.name, 'minor')
-        run: semversioner add-change --type minor --description "${{ github.event.pull_request.title }}"
+        run: semversioner add-change --type minor --description '${{ github.event.pull_request.title }}'
 
       - name: Patch version bump
         if: contains(github.event.pull_request.labels.*.name, 'patch')
-        run: semversioner add-change --type patch --description "${{ github.event.pull_request.title }}"
+        run: semversioner add-change --type patch --description '${{ github.event.pull_request.title }}'
 
       - name: Create release
         run: semversioner release
@@ -37,7 +37,7 @@ jobs:
       - name: Commit changes and push tag
         run: |
           env
-          echo "${{ fromJSON(github) }}"
+          echo '${{ toJSON(github) }}'
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
           TAG=$(semversioner current-version)
