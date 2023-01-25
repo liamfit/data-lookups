@@ -7,7 +7,7 @@ permissions:
   issues: write  
   checks: write
 jobs:
-  checks:
+  update-pr:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
