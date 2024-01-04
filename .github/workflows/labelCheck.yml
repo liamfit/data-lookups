@@ -1,4 +1,4 @@
-name: label-check
+name: Label check
 
 on:
   pull_request:
@@ -10,11 +10,11 @@ on:
       - unlabeled
 
 jobs:
-  label-check:
+  check-for-label:
     name: Check for version label
     runs-on: ubuntu-latest
     steps:
-      - uses: docker://agilepathway/pull-request-label-checker:latest
+      - uses: docker://agilepathway/pull-request-label-checker:v1.4.29
         with:
           one_of: major,minor,patch
           repo_token: ${{ secrets.GITHUB_TOKEN }}
