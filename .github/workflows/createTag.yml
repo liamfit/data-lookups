@@ -1,0 +1,20 @@
+name: Create tag
+
+on:
+  pull_request_target:
+    branches:
+      - main
+    types:
+      - closed
+
+jobs:
+  version-and-tag:
+    name: Bump version and push a new tag
+    permissions:
+      contents: write
+    uses: iag-cargo/actions-workflow-library/.github/workflows/releaseVersionAndTagSemversioner.yml@v3.0.3
+    with:
+      release-type: ${{ inputs.release-type }}
+      release-description: ${{ github.event.pull_request.title }}
+      trigger-release: false
+    secrets: inherit

@@ -1,0 +1,23 @@
+name: Update docs
+
+on: 
+  pull_request:
+
+jobs:
+  update-pr:
+    name: Update Terraform docs
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Update Terraform docs in README.md
+        uses: terraform-docs/gh-actions@v1.0.0
+        with:
+          working-dir: .
+          output-method: inject
+          git-push: "true"
